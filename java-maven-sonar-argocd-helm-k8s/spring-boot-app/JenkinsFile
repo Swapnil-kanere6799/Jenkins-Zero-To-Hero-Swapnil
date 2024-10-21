@@ -9,7 +9,7 @@ pipeline {
     stage('Checkout') {
       steps {
         sh 'echo passed'
-        //git branch: 'main', url: 'https://https://github.com/Swapnil-kanere6799/Jenkins-Zero-To-Hero-Swapnil.git'
+        //git branch: 'main', url: 'https://github.com/Swapnil-kanere6799/Jenkins-Zero-To-Hero-Swapnil.git'
       }
     }
     stage('Build and Test') {
