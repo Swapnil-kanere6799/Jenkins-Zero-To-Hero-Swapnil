@@ -9,12 +9,10 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'docker-login') {
                     '''
                     echo 'Build Docker Image'
                     docker build -t swapnil6799/task:${BUILD_NUMBER} .
-                    '''     
-                    }
+                    ''' 
                 }
             }
         }
