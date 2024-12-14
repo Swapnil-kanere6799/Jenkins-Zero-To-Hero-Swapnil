@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'docker:19.03.12-dind'  // Use Docker-in-Docker image
+            args '--privileged'  // Allow Docker commands to be executed
+        }
+    }
     
     environment {
         IMAGE_TAG = "${BUILD_NUMBER}"
