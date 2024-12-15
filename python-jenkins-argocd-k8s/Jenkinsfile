@@ -42,10 +42,12 @@ pipeline {
                     withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'SSH_KEY_FILE')]) {
                         sh """
                         echo 'Connecting to Instance and Running Container'
-                        ssh -i $SSH_KEY_FILE -o StrictHostKeyChecking=no ec2-user@3.111.171.6 << 'EOF'
+                        ok=$(chmod 600 $SSH_KEY_FILE)
+                        ssh -i $ok -o StrictHostKeyChecking=no ec2-user@3.111.171.6 << 'EOF'
 
                         echo "Pulling Docker Image"
                         docker pull swapnil6799/task:${BUILD_NUMBER}
+
 
                         echo "Running Docker Container"
                         docker run -d --name task-container swapnil6799/task:${BUILD_NUMBER}
