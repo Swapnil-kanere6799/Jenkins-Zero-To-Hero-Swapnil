@@ -9,7 +9,7 @@ pipeline {
         stage('Build Docker') {
             steps {
                 script {
-                    '''
+                    sh '''
                     echo 'Build Docker Image'
                     docker build -t swapnil6799/task:${BUILD_NUMBER} .
                     docker images
