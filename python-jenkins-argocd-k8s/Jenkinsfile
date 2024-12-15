@@ -11,6 +11,8 @@ pipeline {
                 script {
                     sh '''
                     echo 'Build Docker Image'
+                    cd ./python-jenkins-argocd-k8s
+                    pwd
                     docker build -t swapnil6799/task:${BUILD_NUMBER} .
                     docker images
                     ''' 
