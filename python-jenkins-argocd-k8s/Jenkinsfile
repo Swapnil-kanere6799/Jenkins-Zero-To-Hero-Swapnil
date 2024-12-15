@@ -39,10 +39,10 @@ pipeline {
         stage('SSH into Instance & Run Container') {
             steps {
                 script {
-                    sshagent(['ssh-key']) {
+                    withCredentials([sshUserPrivateKey(credentialsId: 'ssh-key', keyFileVariable: 'SSH_KEY_FILE')]) {
                         sh """
                         echo 'Connecting to Instance and Running Container'
-                        ssh -o StrictHostKeyChecking=no ec2-user@3.111.171.6 << 'EOF'
+                        ssh -i $SSH_KEY_FILE -o StrictHostKeyChecking=no ec2-user@3.111.171.6 << 'EOF'
 
                         echo "Pulling Docker Image"
                         docker pull swapnil6799/task:${BUILD_NUMBER}
