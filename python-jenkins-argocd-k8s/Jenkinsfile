@@ -44,7 +44,7 @@ pipeline {
                     sshagent(['ssh-key']) {
                         sh """
                         echo 'Connecting to Instance and Running Container'
-                        ssh -o StrictHostKeyChecking=no ec2-user@<INSTANCE_IP> << 'EOF'
+                        ssh -o StrictHostKeyChecking=no ec2-user@3.111.171.6 << 'EOF'
 
                         echo "Pulling Docker Image"
                         docker pull swapnil6799/task:${BUILD_NUMBER}
